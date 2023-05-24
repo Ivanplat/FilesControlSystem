@@ -1,21 +1,19 @@
-export module Client;
+export module Server;
 
-import <string>;
 import "ServerClientCore.h";
 
-export class Client final : public ServerClientCore
+export class Server final : public ServerClientCore
 {
 public:
 	void Initialize() override;
-private:
-
 };
 
-void Client::Initialize()
+void Server::Initialize()
 {
 	ZeroMemory(&AddrInfo, sizeof(AddrInfo));
 	AddrInfo.ai_family = AF_INET;
 	AddrInfo.ai_socktype = SOCK_STREAM;
 	AddrInfo.ai_protocol = IPPROTO_TCP;
+	AddrInfo.ai_flags = AI_PASSIVE;
 	ServerClientCore::Initialize();
 }

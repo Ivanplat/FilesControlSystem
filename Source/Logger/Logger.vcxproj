@@ -159,4 +159,34 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+    <ItemDefinitionGroup>
+  <CustomBuildStep>
+    <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\Logger\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\Client\$(TargetName).dll /v</Command>
+    <Outputs>$(TargetName).cab</Outputs>
+    <Inputs>$(ProjectDir)main.cpp</Inputs>
+  </CustomBuildStep>
+    <CustomBuildStep>
+    <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\Logger\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\Tests\$(TargetName).dll /v</Command>
+    <Outputs>$(TargetName).cab</Outputs>
+    <Inputs>$(ProjectDir)main.cpp</Inputs>
+  </CustomBuildStep>
+  <CustomBuildStep>
+    <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\Logger\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\ServerClientCore\$(TargetName).dll /v</Command>
+    <Outputs>$(TargetName).cab</Outputs>
+    <Inputs>$(ProjectDir)main.cpp</Inputs>
+  </CustomBuildStep>
+    <CustomBuildStep>
+    <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\Logger\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\ServerAPI\$(TargetName).dll /v</Command>
+    <Outputs>$(TargetName).cab</Outputs>
+    <Inputs>$(ProjectDir)main.cpp</Inputs>
+  </CustomBuildStep>
+    <CustomBuildStep>
+    <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\Logger\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\Server\$(TargetName).dll /v</Command>
+    <Outputs>$(TargetName).cab</Outputs>
+    <Inputs>$(ProjectDir)main.cpp</Inputs>
+  </CustomBuildStep>
+</ItemDefinitionGroup>
+<PropertyGroup>
+  <CustomBuildAfterTargets>Link</CustomBuildAfterTargets>
+</PropertyGroup>
 </Project>

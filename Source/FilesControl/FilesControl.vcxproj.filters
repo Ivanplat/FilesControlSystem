@@ -15,10 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\main.cppm">
+    <ClInclude Include="Source\FilesControl.h">
       <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Server.ixx">
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\FilesControl.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
   </ItemGroup>
