@@ -24,8 +24,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{42286939-3f7a-41d9-8f48-053c0e111da8}</ProjectGuid>
-    <RootNamespace>Server</RootNamespace>
+    <ProjectGuid>{857f05f1-db3c-4175-b33b-14f3f9c567e1}</ProjectGuid>
+    <RootNamespace>ServerAPI</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -74,20 +74,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)/bin/$(Platform)/$(Configuration)/Server/</OutDir>
-    <IntDir>$(SolutionDir)/bin/$(Platform)/$(Configuration)/Server/</IntDir>
+    <OutDir>$(SolutionDir)/bin/$(Platform)/$(Configuration)/ServerAPI/</OutDir>
+    <IntDir>$(SolutionDir)/Intermidate/$(Platform)/$(Configuration)/ServerAPI/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)/bin/$(Platform)/$(Configuration)/Server/</OutDir>
-    <IntDir>$(SolutionDir)/bin/$(Platform)/$(Configuration)/Server/</IntDir>
+    <OutDir>$(SolutionDir)/bin/$(Platform)/$(Configuration)/ServerAPI/</OutDir>
+    <IntDir>$(SolutionDir)/Intermidate/$(Platform)/$(Configuration)/ServerAPI/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)/bin/$(Platform)/$(Configuration)/Server/</OutDir>
-    <IntDir>$(SolutionDir)/bin/$(Platform)/$(Configuration)/Server/</IntDir>
+    <OutDir>$(SolutionDir)/bin/$(Platform)/$(Configuration)/ServerAPI/</OutDir>
+    <IntDir>$(SolutionDir)/Intermidate/$(Platform)/$(Configuration)/ServerAPI/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)/bin/$(Platform)/$(Configuration)/Server/</OutDir>
-    <IntDir>$(SolutionDir)/bin/$(Platform)/$(Configuration)/Server/</IntDir>
+    <OutDir>$(SolutionDir)/bin/$(Platform)/$(Configuration)/ServerAPI/</OutDir>
+    <IntDir>$(SolutionDir)/Intermidate/$(Platform)/$(Configuration)/ServerAPI/</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -95,6 +95,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(SolutionDir)/ServerClientCore/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -112,6 +114,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(SolutionDir)/ServerClientCore/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -129,6 +133,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(SolutionDir)/ServerClientCore/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -146,6 +152,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(SolutionDir)/ServerClientCore/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>

@@ -1,4 +1,4 @@
-#include "Logger.h"
+import "Logger.h";
 
 int main()
 {
