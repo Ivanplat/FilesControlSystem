@@ -84,7 +84,7 @@
       <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Source/Logger/Source/;$(SolutionDir)/Source/Client/Source/;$(SolutionDir)/Source/Server/Source/;$(SolutionDir)/Source/ServerAPI/Source/;$(SolutionDir)/Source/ServerClientCore/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;$(SolutionDir)/Source/Client/Source/;$(SolutionDir)/Source/Logger/Source/;$(SolutionDir)/Source/Server/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -102,7 +102,7 @@
       <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Source/Logger/Source/;$(SolutionDir)/Source/Client/Source/;$(SolutionDir)/Source/Server/Source/;$(SolutionDir)/Source/ServerAPI/Source/;$(SolutionDir)/Source/ServerClientCore/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;$(SolutionDir)/Source/Client/Source/;$(SolutionDir)/Source/Logger/Source/;$(SolutionDir)/Source/Server/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -119,7 +119,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Source/Logger/Source/;$(SolutionDir)/Source/Client/Source/;$(SolutionDir)/Source/Server/Source/;$(SolutionDir)/Source/ServerAPI/Source/;$(SolutionDir)/Source/ServerClientCore/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;$(SolutionDir)/Source/Client/Source/;$(SolutionDir)/Source/Logger/Source/;$(SolutionDir)/Source/Server/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -138,7 +138,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Source/Logger/Source/;$(SolutionDir)/Source/Client/Source/;$(SolutionDir)/Source/Server/Source/;$(SolutionDir)/Source/ServerAPI/Source/;$(SolutionDir)/Source/ServerClientCore/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;$(SolutionDir)/Source/Client/Source/;$(SolutionDir)/Source/Logger/Source/;$(SolutionDir)/Source/Server/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

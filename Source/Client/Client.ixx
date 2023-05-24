@@ -1,13 +1,12 @@
 export module Client;
 
 import <string>;
+import "ServerClientCore.h";
 
-
-export class Client
+export class Client final : public ServerClientCore
 {
 public:
 	
 private:
-	std::string ServerAdress_;
 
 };

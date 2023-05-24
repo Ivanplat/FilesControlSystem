@@ -1,6 +1,8 @@
 import "Logger.h";
+import Client;
 
 int main()
 {
-	SLog->Print("Hello");
+	Client cl;
+	cl.Initialize();
 }
