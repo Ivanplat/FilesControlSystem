@@ -52,6 +52,8 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Client\Source\Client.ixx" />
+    <ClCompile Include="..\Server\Source\Server.ixx" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -97,10 +99,12 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;$(SolutionDir)/Source/Client/Source/;$(SolutionDir)/Source/Logger/Source/;$(SolutionDir)/Source/Server/Source/;$(SolutionDir)/Source/ServerAPI/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>Onecore.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -115,10 +119,12 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;$(SolutionDir)/Source/Client/Source/;$(SolutionDir)/Source/Logger/Source/;$(SolutionDir)/Source/Server/Source/;$(SolutionDir)/Source/ServerAPI/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>Onecore.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -132,12 +138,14 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;$(SolutionDir)/Source/Client/Source/;$(SolutionDir)/Source/Logger/Source/;$(SolutionDir)/Source/Server/Source/;$(SolutionDir)/Source/ServerAPI/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <AdditionalDependencies>Onecore.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -151,12 +159,14 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;$(SolutionDir)/Source/Client/Source/;$(SolutionDir)/Source/Logger/Source/;$(SolutionDir)/Source/Server/Source/;$(SolutionDir)/Source/ServerAPI/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <AdditionalDependencies>Onecore.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

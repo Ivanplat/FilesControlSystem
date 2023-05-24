@@ -10,7 +10,7 @@
     <ClCompile Include="Source\main.cppm">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="Client.ixx">
+    <ClCompile Include="Source\Client.ixx">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
   </ItemGroup>

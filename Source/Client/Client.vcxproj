@@ -163,7 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Client.ixx" />
+    <ClCompile Include="Source\Client.ixx" />
     <ClCompile Include="Source\main.cppm" />
   </ItemGroup>
   <ItemGroup>
