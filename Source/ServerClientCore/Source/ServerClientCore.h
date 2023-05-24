@@ -7,5 +7,6 @@ public:
 	virtual ~ServerClientCore() noexcept = default;
 
 public:
-	virtual bool Initialize();
+	virtual bool Startup();
+	virtual bool Shutdown();
 };

@@ -64,8 +64,20 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Client\Client.vcxproj">
+      <Project>{7d356427-88a1-47ce-8376-c28ee4840e9d}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.vcxproj">
       <Project>{138dc4b5-be3d-413c-a4a2-4b3b2194b88d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ServerAPI\ServerAPI.vcxproj">
+      <Project>{857f05f1-db3c-4175-b33b-14f3f9c567e1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ServerClientCore\ServerClientCore.vcxproj">
+      <Project>{0c3226a8-47dc-4bce-a7a6-0f0509d65b7c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Server\Server.vcxproj">
+      <Project>{42286939-3f7a-41d9-8f48-053c0e111da8}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemDefinitionGroup />

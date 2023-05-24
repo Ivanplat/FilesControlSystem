@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <filesystem>
+#include <format>
 
 namespace fs = std::filesystem;
 
@@ -19,14 +20,13 @@ void Logger::Print(std::string_view message)
 void Logger::Print(std::string_view message, EMessageType type)
 {
 	std::string prefix = "";
-	std::string resultString = "";
 	switch (type)
 	{
 	case EMessageType::kOk: prefix = "LOG: "; break;
 	case EMessageType::kError: prefix = "ERROR: "; break;
 	case EMessageType::kWarning: prefix = "WARNING: "; break;
 	}
-
+	Print(std::format("{}{}", prefix, message));
 }
 
 Logger::Logger() noexcept

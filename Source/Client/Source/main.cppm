@@ -4,5 +4,6 @@ import Client;
 int main()
 {
 	Client cl;
-	cl.Initialize();
+	cl.Startup();
+	cl.Shutdown();
 }
