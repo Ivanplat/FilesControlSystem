@@ -4,5 +4,9 @@
 
 class Client final : public ClientCore
 {
+public:
+	void Initialize() override;
+	bool ConnectToServer();
+	void SendFileToServer();
 private:
 };

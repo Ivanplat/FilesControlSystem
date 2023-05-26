@@ -6,6 +6,7 @@
 #include <thread>
 #include <mutex>
 #include <future>
+#include <memory>
 
 #pragma comment(lib, "ws2_32.lib")
 
@@ -59,6 +60,26 @@ void ServerClientCore::Initialize()
 	}
 }
 
+void ServerClientCore::RecieveFile(SOCKET rvSocket)
+{
+	Data file = Data(100000);
+	std::int32_t result = recv(rvSocket, (char*)file.data(), file.size(), 0);
+	if (result == SOCKET_ERROR)
+	{
+		SLog->Print
+		(
+			std::format("Could not recieve from SOCKET {}!", rvSocket),
+			EMessageType::kWarning
+		);
+		return;
+	}
+	fs::path currentPath = SFilesControl->GetCurrentPath();
+	std::string filePath = currentPath.string() + "\\testfile.txt";
+	std::fstream fileStream = SFilesControl->CreateFileByPath(filePath, std::ios::app);
+	fileStream << std::string(file.begin(), file.end());
+	fileStream.close();
+}
+
 void ServerClientCore::GetAdressAndPortInfo()
 {
 	SFilesControl;
@@ -94,9 +115,37 @@ Data ServerClientCore::Recieve()
 	return buffer;
 }
 
+ServerCore::ServerCore()
+{
+	SettingManagerFactory factory;
+	auto managerPtr = factory.ConstructSettingsManager<ServerSettingsManager, ServerSettings>();
+	std::int16_t result = managerPtr->CreateSettingsFiles();
+	if (result == kConfigFilesExist)
+	{
+		std::map<std::string_view, std::string> settings = { {"address", ""}, {"port", ""} };
+		managerPtr->ParseSettings(settings);
+		Port = settings["port"];
+		if (Port == "")
+		{
+			SLog->Print("Server port is not set properly!", EMessageType::kError);
+			throw std::exception("Could not parse config files!");
+			exit(-1);
+		}
+	}
+	else if (result == kConfigFilesCreated)
+	{
+		exit(0);
+	}
+	else if (result == kCouldNotCreateConfigFiles)
+	{
+		throw std::exception("Could not create config files!");
+		exit(-1);
+	}
+	managerPtr.reset();
+}
+
 void ServerCore::Initialize()
 {
-	Port = "1234";
 	ZeroMemory(&AddrInfo, sizeof(AddrInfo));
 	AddrInfo.ai_family = AF_INET;
 	AddrInfo.ai_socktype = SOCK_STREAM;
@@ -156,18 +205,27 @@ void ServerCore::CheckNewConnections(SOCKET ServerSocket)
 
 void ServerCore::HandleUser(SOCKET user)
 {
-	Data command = Data(128);
-	std::int32_t result = recv(user, (char*)command.data(), command.size(), 0);
-	if (result == SOCKET_ERROR)
+	while (true)
 	{
-		SLog->Print
-		(
-			std::format("Could not recive data from SOCKET {}\n Last Error: ", user, WSAGetLastError()),
-			EMessageType::kWarning
-		);
-		return;
+		Data command = Data(128);
+		std::int32_t result = recv(user, (char*)command.data(), command.size(), 0);
+		if (result == SOCKET_ERROR)
+		{
+			SLog->Print
+			(
+				std::format("User SOCKET {} disconnected!", user),
+				EMessageType::kOk
+			);
+			return;
+		}
+		std::string commandStr(command.begin(), command.end());
+		if (commandStr.starts_with("send file"))
+		{
+			send(user, "Ok", 2, 0);
+			RecieveFile(user);
+		}
+		SLog->Print(std::string(command.begin(), command.end()));
 	}
-	SLog->Print(std::string(command.begin(), command.end()));
 }
 
 void ServerCore::MainLoop()
@@ -185,38 +243,35 @@ void ServerCore::MainLoop()
 	mainThread.join();
 }
 
-void ClientCore::Initialize()
+ClientCore::ClientCore()
 {
-	ZeroMemory(&AddrInfo, sizeof(AddrInfo));
-	AddrInfo.ai_family = AF_INET;
-	AddrInfo.ai_socktype = SOCK_STREAM;
-	AddrInfo.ai_protocol = IPPROTO_TCP;
-	std::int32_t result = getaddrinfo(Address.c_str(), Port.c_str(), &AddrInfo, &AddrResult);
-	if (result == SOCKET_ERROR)
+	SettingManagerFactory factory;
+	auto managerPtr = factory.ConstructSettingsManager<ClientSettingsManager, ClientSettings>();
+	if (managerPtr != nullptr)
 	{
-		SLog->Print
-		(
-			std::format("Could not initalize WSA!\n Last WS error: {}", WSAGetLastError()),
-			EMessageType::kError
-		);
-		Shutdown();
-		throw std::exception("WSA Initialization error!");
+		std::int16_t result = managerPtr->CreateSettingsFiles();
+		if (result == kConfigFilesExist)
+		{
+			std::map<std::string_view, std::string> settings = { {"address", ""}, {"port", ""} };
+			managerPtr->ParseSettings(settings);
+			Address = settings["address"];
+			Port = settings["port"];
+			if (Port == "" || Address == "")
+			{
+				SLog->Print("Server address and/or server port are not set properly!", EMessageType::kError);
+				throw std::exception("Could not parse config files!");
+				exit(-1);
+			}
+		}
+		else if (result == kConfigFilesCreated)
+		{
+			exit(0);
+		}
+		else if(result == kCouldNotCreateConfigFiles)
+		{
+			throw std::exception("Could not create config files!");
+			exit(-1);
+		}
 	}
-	ServerClientCore::Initialize();
-}
-
-bool ClientCore::ConnectToServer()
-{
-	std::int32_t result = connect(Socket, AddrResult->ai_addr, static_cast<int>(AddrResult->ai_addrlen));
-	if (result == SOCKET_ERROR)
-	{
-		SLog->Print
-		(
-			std::format("Could not connect to the server!\n Last WS error: {}", WSAGetLastError()),
-			EMessageType::kError
-		);
-		Shutdown();
-		return false;
-	}
-	return true;
+	managerPtr.reset();
 }

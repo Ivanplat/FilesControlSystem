@@ -44,7 +44,7 @@ Logger::Logger() noexcept
 	std::string filePath = loggerPath + "\\log.txt";
 	if (!SFilesControl->DoesFileExist(filePath))
 	{
-		LoggerFile_ = SFilesControl->CreateFile(filePath, std::ios::app);
+		LoggerFile_ = SFilesControl->CreateFileByPath(filePath, std::ios::app);
 	}
 }
 

@@ -21,6 +21,7 @@ public:
 	virtual bool Startup();
 	virtual bool Shutdown();
 	virtual void Initialize();
+	virtual void RecieveFile(SOCKET rvSocket);
 
 protected:
 	virtual void GetAdressAndPortInfo();
@@ -38,6 +39,9 @@ protected:
 class ServerCore : public ServerClientCore
 {
 public:
+	explicit ServerCore();
+
+public:
 	virtual void Initialize() override;
 	virtual void CheckNewConnections(SOCKET ServerSocket);
 	virtual void HandleUser(SOCKET user);
@@ -47,6 +51,5 @@ public:
 class ClientCore : public ServerClientCore
 {
 public:
-	virtual void Initialize() override;
-	virtual bool ConnectToServer();
+	explicit ClientCore();
 };

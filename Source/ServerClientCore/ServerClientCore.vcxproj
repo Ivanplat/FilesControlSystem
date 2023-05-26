@@ -449,6 +449,9 @@
     <ClCompile Include="Source\ServerClientCore.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FilesControl\FilesControl.vcxproj">
+      <Project>{9c57d707-63b0-4017-9695-178a8219d155}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.vcxproj">
       <Project>{138dc4b5-be3d-413c-a4a2-4b3b2194b88d}</Project>
     </ProjectReference>
