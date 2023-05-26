@@ -34,9 +34,9 @@ void Logger::Print(std::string_view message, EMessageType type)
 Logger::Logger() noexcept
 {
 	std::string loggerPath = fs::current_path().string() + "\\log";
-	if (!fs::is_directory(loggerPath))
+	if (!SFilesControl->DoesFolderExist(loggerPath))
 	{
-		if (!fs::create_directory(loggerPath))
+		if (!SFilesControl->CreateFolder(loggerPath))
 		{
 			throw std::exception("Could not create the logger directory!");
 		}

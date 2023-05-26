@@ -8,4 +8,5 @@ int main()
 	cl.Startup();
 	cl.Initialize();
 	cl.Shutdown();
+	system("pause");
 }

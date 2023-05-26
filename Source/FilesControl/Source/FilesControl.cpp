@@ -23,6 +23,7 @@ File FilesControl::CreateFile(std::string_view path, std::ios_base::openmode mod
 		file.clear();
 		file << "";
 		file.close();
+		return file;
 	}
 	else
 	{
@@ -43,12 +44,11 @@ inline bool FilesControl::DoesFolderExist(std::string_view path)
 
 bool FilesControl::CreateFolder(std::string_view path)
 {
-	if (DoesFolderExist(path))
+	if (!DoesFolderExist(path))
 	{
-		fs::create_directory(path);
-		return true;
+		return fs::create_directory(path);
 	}
-	return false;
+	return true;
 }
 
 bool TxtParser::GetValue(std::string_view filePath, std::string_view key, std::string& result)
