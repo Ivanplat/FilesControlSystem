@@ -19,8 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\main.cppm" />
-    <ClCompile Include="Source\Server.ixx" />
+    <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\Server.cpp" />
+    <ClCompile Include="Source\Server.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FilesControl\FilesControl.vcxproj">
@@ -31,6 +32,9 @@
     </ProjectReference>
     <ProjectReference Include="..\ServerClientCore\ServerClientCore.vcxproj">
       <Project>{0c3226a8-47dc-4bce-a7a6-0f0509d65b7c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\UICore\UICore.vcxproj">
+      <Project>{d1b6b4fc-8874-4752-9598-39bd2775cba6}</Project>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -88,18 +92,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)/bin/$(Platform)/$(Configuration)/Server/</OutDir>
     <IntDir>$(SolutionDir)/Intermidate/$(Platform)/$(Configuration)/Server/</IntDir>
+    <IncludePath>$(ProjectDir)/Source/;$(SolutionDir)/Source/ServerClientCore/Source/;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)/bin/$(Platform)/$(Configuration)/Server/</OutDir>
     <IntDir>$(SolutionDir)/Intermidate/$(Platform)/$(Configuration)/Server/</IntDir>
+    <IncludePath>$(ProjectDir)/Source/;$(SolutionDir)/Source/ServerClientCore/Source/;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)/bin/$(Platform)/$(Configuration)/Server/</OutDir>
     <IntDir>$(SolutionDir)/Intermidate/$(Platform)/$(Configuration)/Server/</IntDir>
+    <IncludePath>$(ProjectDir)/Source/;$(SolutionDir)/Source/ServerClientCore/Source/;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)/bin/$(Platform)/$(Configuration)/Server/</OutDir>
     <IntDir>$(SolutionDir)/Intermidate/$(Platform)/$(Configuration)/Server/</IntDir>
+    <IncludePath>$(ProjectDir)/Source/;$(SolutionDir)/Source/ServerClientCore/Source/;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -107,14 +115,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);__SERVER_BUILD;__SERVER_BUILD</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;$(SolutionDir)/Source/Logger/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ServerClientCore.lib;ws2_32.lib;Onecore.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ServerClientCore.lib;ws2_32.lib;Onecore.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)/bin/$(Platform)/$(Configuration)/ServerClientCore/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -126,7 +134,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);__SERVER_BUILD;__SERVER_BUILD</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;$(SolutionDir)/Source/Logger/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -135,7 +143,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ServerClientCore.lib;ws2_32.lib;Onecore.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ServerClientCore.lib;ws2_32.lib;Onecore.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)/bin/$(Platform)/$(Configuration)/ServerClientCore/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -145,15 +153,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);__SERVER_BUILD;__SERVER_BUILD</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;$(SolutionDir)/Source/Logger/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ServerClientCore.lib;ws2_32.lib;Onecore.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)/bin/$(Platform)/$(Configuration)/ServerClientCore/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ServerClientCore.lib;ws2_32.lib;Onecore.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)/bin/$(Platform)/$(Configuration)/ServerClientCore/;$(SolutionDir)/libs/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -164,7 +172,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);__SERVER_BUILD;__SERVER_BUILD</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;$(SolutionDir)/Source/Logger/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -173,7 +181,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ServerClientCore.lib;ws2_32.lib;Onecore.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ServerClientCore.lib;ws2_32.lib;Onecore.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)/bin/$(Platform)/$(Configuration)/ServerClientCore/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>

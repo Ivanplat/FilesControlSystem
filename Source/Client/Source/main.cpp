@@ -1,5 +1,5 @@
-import "Logger.h";
-import Client;
+#include "Logger.h"
+#include "Client.h"
 
 
 int main()

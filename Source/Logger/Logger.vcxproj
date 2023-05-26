@@ -27,26 +27,26 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -90,7 +90,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);__EXPORT_DLL</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__EXPORT_LOGGER_DLL</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
@@ -106,7 +106,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);__EXPORT_DLL</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__EXPORT_LOGGER_DLL</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
@@ -122,7 +122,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);__EXPORT_DLL</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__EXPORT_LOGGER_DLL</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
@@ -138,7 +138,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);__EXPORT_DLL</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__EXPORT_LOGGER_DLL</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
@@ -159,34 +159,22 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-    <ItemDefinitionGroup>
-  <CustomBuildStep>
-    <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\Logger\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\Client\$(TargetName).dll /v</Command>
-    <Outputs>$(TargetName).cab</Outputs>
-    <Inputs>$(ProjectDir)main.cpp</Inputs>
-  </CustomBuildStep>
-    <CustomBuildStep>
-    <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\Logger\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\Tests\$(TargetName).dll /v</Command>
-    <Outputs>$(TargetName).cab</Outputs>
-    <Inputs>$(ProjectDir)main.cpp</Inputs>
-  </CustomBuildStep>
-  <CustomBuildStep>
-    <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\Logger\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\ServerClientCore\$(TargetName).dll /v</Command>
-    <Outputs>$(TargetName).cab</Outputs>
-    <Inputs>$(ProjectDir)main.cpp</Inputs>
-  </CustomBuildStep>
-    <CustomBuildStep>
-    <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\Logger\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\ServerAPI\$(TargetName).dll /v</Command>
-    <Outputs>$(TargetName).cab</Outputs>
-    <Inputs>$(ProjectDir)main.cpp</Inputs>
-  </CustomBuildStep>
-    <CustomBuildStep>
-    <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\Logger\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\Server\$(TargetName).dll /v</Command>
-    <Outputs>$(TargetName).cab</Outputs>
-    <Inputs>$(ProjectDir)main.cpp</Inputs>
-  </CustomBuildStep>
-</ItemDefinitionGroup>
-<PropertyGroup>
-  <CustomBuildAfterTargets>Link</CustomBuildAfterTargets>
-</PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)/Source/FilesControl/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <ClCompile>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)/Source/FilesControl/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <ClCompile>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)/Source/FilesControl/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <ClCompile>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)/Source/FilesControl/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+  </ItemDefinitionGroup>
 </Project>

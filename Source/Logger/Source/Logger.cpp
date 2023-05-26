@@ -3,6 +3,7 @@
 #include <iostream>
 #include <filesystem>
 #include <format>
+#include "FilesControl.h"
 
 namespace fs = std::filesystem;
 
@@ -15,6 +16,7 @@ Logger* Logger::Instance()
 void Logger::Print(std::string_view message)
 {
 	std::cout << message << '\n';
+	LoggerFile_ << message << "\n";
 }
 
 void Logger::Print(std::string_view message, EMessageType type)
@@ -40,17 +42,9 @@ Logger::Logger() noexcept
 		}
 	}
 	std::string filePath = loggerPath + "\\log.txt";
-	LoggerFile_.open(filePath);
-	if (!LoggerFile_.is_open())
+	if (!SFilesControl->DoesFileExist(filePath))
 	{
-		LoggerFile_.clear();
-		LoggerFile_.close();
-		LoggerFile_.open(filePath, std::ios::out);
-		if (!LoggerFile_.is_open())
-		{
-			throw std::exception("Could not create the logger file!");
-		}
-		LoggerFile_ << " ";
+		LoggerFile_ = SFilesControl->CreateFile(filePath, std::ios::app);
 	}
 }
 

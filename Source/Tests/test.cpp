@@ -1,9 +1,8 @@
 #include "pch.h"
 #include "Logger.h"
 #include "ServerClientCore.h"
-
-import Server;
-import Client;
+#include "Server.h"
+#include "Client.h"
 
 TEST(LoggerTests, ExistanceTesting)
 {

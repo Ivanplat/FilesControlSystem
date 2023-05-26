@@ -161,7 +161,7 @@
     <ClCompile Include="Source\ServerClientCore.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Source\Logger\Logger.vcxproj">
+    <ProjectReference Include="..\Logger\Logger.vcxproj">
       <Project>{138dc4b5-be3d-413c-a4a2-4b3b2194b88d}</Project>
     </ProjectReference>
   </ItemGroup>

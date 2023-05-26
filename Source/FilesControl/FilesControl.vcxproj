@@ -90,7 +90,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);__EXPORT_DLL</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__EXPORT_FILES_CONTROL_DLL</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
@@ -107,7 +107,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);__EXPORT_DLL</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__EXPORT_FILES_CONTROL_DLL</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
@@ -124,7 +124,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);__EXPORT_DLL</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__EXPORT_FILES_CONTROL_DLL</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
@@ -141,7 +141,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);__EXPORT_DLL</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__EXPORT_FILES_CONTROL_DLL</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
@@ -155,47 +155,63 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Source\Logger\Logger.vcxproj">
-      <Project>{138dc4b5-be3d-413c-a4a2-4b3b2194b88d}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Source\FilesControl.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\FilesControl.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logger\Logger.vcxproj">
+      <Project>{138dc4b5-be3d-413c-a4a2-4b3b2194b88d}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ItemDefinitionGroup>
-  <CustomBuildStep>
-    <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\FilesControl\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\Client\$(TargetName).dll /v</Command>
-    <Outputs>$(TargetName).cab</Outputs>
-    <Inputs>$(ProjectDir)main.cpp</Inputs>
-  </CustomBuildStep>
-  <CustomBuildStep>
-    <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\FilesControl\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\Tests\$(TargetName).dll /v</Command>
-    <Outputs>$(TargetName).cab</Outputs>
-    <Inputs>$(ProjectDir)main.cpp</Inputs>
-  </CustomBuildStep>
-  <CustomBuildStep>
-    <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\FilesControl\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\Server\$(TargetName).dll /v</Command>
-    <Outputs>$(TargetName).cab</Outputs>
-    <Inputs>$(ProjectDir)main.cpp</Inputs>
-  </CustomBuildStep>
-  <CustomBuildStep>
-    <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\FilesControl\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\ServerClientCore\$(TargetName).dll /v</Command>
-    <Outputs>$(TargetName).cab</Outputs>
-    <Inputs>$(ProjectDir)main.cpp</Inputs>
-  </CustomBuildStep>
-  <CustomBuildStep>
-    <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\FilesControl\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\Logger\$(TargetName).dll /v</Command>
-    <Outputs>$(TargetName).cab</Outputs>
-    <Inputs>$(ProjectDir)main.cpp</Inputs>
-  </CustomBuildStep>
+    <CustomBuildStep>
+      <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\FilesControl\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\Client\$(TargetName).dll /v</Command>
+      <Outputs>$(TargetName).cab</Outputs>
+      <Inputs>$(ProjectDir)main.cpp</Inputs>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\FilesControl\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\Tests\$(TargetName).dll /v</Command>
+      <Outputs>$(TargetName).cab</Outputs>
+      <Inputs>$(ProjectDir)main.cpp</Inputs>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\FilesControl\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\Server\$(TargetName).dll /v</Command>
+      <Outputs>$(TargetName).cab</Outputs>
+      <Inputs>$(ProjectDir)main.cpp</Inputs>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\FilesControl\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\ServerClientCore\$(TargetName).dll /v</Command>
+      <Outputs>$(TargetName).cab</Outputs>
+      <Inputs>$(ProjectDir)main.cpp</Inputs>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Command>copy $(SolutionDir)\bin\$(Platform)\$(Configuration)\FilesControl\$(TargetName).dll $(SolutionDir)\bin\$(Platform)\$(Configuration)\Logger\$(TargetName).dll /v</Command>
+      <Outputs>$(TargetName).cab</Outputs>
+      <Inputs>$(ProjectDir)main.cpp</Inputs>
+    </CustomBuildStep>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Logger.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)/bin/$(Platform)/$(Configuration)/Logger/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Logger.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)/bin/$(Platform)/$(Configuration)/Logger/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Logger.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)/bin/$(Platform)/$(Configuration)/Logger/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Logger.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)/bin/$(Platform)/$(Configuration)/Logger/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
   </ItemDefinitionGroup>
   <PropertyGroup>
-  <CustomBuildAfterTargets>Link</CustomBuildAfterTargets>
-</PropertyGroup>
+    <CustomBuildAfterTargets>Link</CustomBuildAfterTargets>
+  </PropertyGroup>
 </Project>

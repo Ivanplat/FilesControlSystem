@@ -3,10 +3,7 @@
   <ItemGroup>
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="..\Server\Source\Server.ixx">
-      <Filter>External Linkage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Client\Source\Client.ixx">
+    <ClCompile Include="..\Client\Source\Client.cpp">
       <Filter>External Linkage</Filter>
     </ClCompile>
   </ItemGroup>

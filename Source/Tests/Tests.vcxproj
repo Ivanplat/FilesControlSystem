@@ -52,8 +52,7 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Client\Source\Client.ixx" />
-    <ClCompile Include="..\Server\Source\Server.ixx" />
+    <ClCompile Include="..\Client\Source\Client.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -69,6 +68,9 @@
     <ProjectReference Include="..\Client\Client.vcxproj">
       <Project>{7d356427-88a1-47ce-8376-c28ee4840e9d}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\FilesControl\FilesControl.vcxproj">
+      <Project>{9c57d707-63b0-4017-9695-178a8219d155}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.vcxproj">
       <Project>{138dc4b5-be3d-413c-a4a2-4b3b2194b88d}</Project>
     </ProjectReference>
@@ -80,6 +82,9 @@
     </ProjectReference>
     <ProjectReference Include="..\Server\Server.vcxproj">
       <Project>{42286939-3f7a-41d9-8f48-053c0e111da8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\UICore\UICore.vcxproj">
+      <Project>{d1b6b4fc-8874-4752-9598-39bd2775cba6}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemDefinitionGroup />
@@ -94,12 +99,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;$(SolutionDir)/Source/Client/Source/;$(SolutionDir)/Source/Logger/Source/;$(SolutionDir)/Source/Server/Source/;$(SolutionDir)/Source/ServerAPI/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableModules>false</EnableModules>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -114,12 +119,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>X64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;$(SolutionDir)/Source/Client/Source/;$(SolutionDir)/Source/Logger/Source/;$(SolutionDir)/Source/Server/Source/;$(SolutionDir)/Source/ServerAPI/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableModules>false</EnableModules>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -132,13 +137,13 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;$(SolutionDir)/Source/Client/Source/;$(SolutionDir)/Source/Logger/Source/;$(SolutionDir)/Source/Server/Source/;$(SolutionDir)/Source/ServerAPI/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableModules>false</EnableModules>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -153,13 +158,13 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PreprocessorDefinitions>X64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(SolutionDir)/Source/ServerClientCore/Source/;$(SolutionDir)/Source/Client/Source/;$(SolutionDir)/Source/Logger/Source/;$(SolutionDir)/Source/Server/Source/;$(SolutionDir)/Source/ServerAPI/Source/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableModules>false</EnableModules>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

@@ -6,6 +6,11 @@
 
 typedef std::vector<std::uint8_t> Data;
 
+struct ConnectedUserInfo
+{
+	SOCKET UserSocket;
+};
+
 class ServerClientCore
 {
 public:
@@ -28,4 +33,20 @@ protected:
 	SOCKET Socket;
 	ADDRINFO AddrInfo;
 	ADDRINFO* AddrResult = nullptr;
+};
+
+class ServerCore : public ServerClientCore
+{
+public:
+	virtual void Initialize() override;
+	virtual void CheckNewConnections(SOCKET ServerSocket);
+	virtual void HandleUser(SOCKET user);
+	virtual void MainLoop();
+};
+
+class ClientCore : public ServerClientCore
+{
+public:
+	virtual void Initialize() override;
+	virtual bool ConnectToServer();
 };
